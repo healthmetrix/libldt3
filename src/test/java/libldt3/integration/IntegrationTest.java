@@ -15,9 +15,13 @@ public class IntegrationTest {
     public void reads306Doc() throws IOException {
         ClassLoader classLoader = this.getClass().getClassLoader();
         File file = new File(classLoader.getResource("3.0.6-normal.ldt").getFile());
+        reader.read(file.toString());
+    }
 
-
-        System.out.println(reader.read(file.toString()));
+    @Test
+    public void reads324Doc() throws IOException {
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        File file = new File(classLoader.getResource("3.2.4-with-bak.ldt").getFile());
+        reader.read(file.toString());
     }
 }
- 
