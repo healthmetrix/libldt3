@@ -48,6 +48,8 @@ public @Getter @Setter class Timestamp {
 	@Feld(value = "7272", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
 	private String freitext;
+	@Feld(value = "7273", feldart = Feldart.muss)
+	private String zeitzone;
 	@Feld(value = "8235", name = "Person_zum_Timestamp", feldart = Feldart.kann)
 	@Regelsatz(laenge = 20)
 	private Person person;
