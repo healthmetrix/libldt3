@@ -68,7 +68,7 @@ public @Getter @Setter class UntersuchungsergebnisZytologieKrebsvorsorge {
 	@Regelsatz(maxLaenge = 60)
 	private TestIdent testIdent;
 	@Feld(value = "8418", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 1)
+	@Regelsatz(laenge = 2)
 	private TestStatus teststatus;
 	@Feld(value = "7368", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)

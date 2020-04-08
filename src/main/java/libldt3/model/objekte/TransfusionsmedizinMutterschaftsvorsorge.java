@@ -45,7 +45,7 @@ public @Getter @Setter class TransfusionsmedizinMutterschaftsvorsorge {
 	@Regelsatz(maxLaenge = 60)
 	private List<String> probengefaessIdent;
 	@Feld(value = "8418", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
+	@Regelsatz(laenge = 2)
 	private TestStatus teststatus;
 	@Feld(value = "3412", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 6)

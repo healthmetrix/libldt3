@@ -149,7 +149,7 @@ public @Getter @Setter class UntersuchungsergebnisMikrobiologie {
 	@Regelsatz(laenge = 1)
 	private List<NachweisverfahrenErweitert> nachweisverfahren;
 	@Feld(value = "8418", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
+	@Regelsatz(laenge = 2)
 	private TestStatus teststatus;
 	@Feld(value = "7354", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
