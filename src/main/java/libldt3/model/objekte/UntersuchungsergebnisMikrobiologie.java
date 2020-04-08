@@ -26,8 +26,8 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.*;
-import libldt3.model.regel.kontext.K073;
 import libldt3.model.regel.kontext.K076;
+import libldt3.model.regel.kontext.K082;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,7 +44,7 @@ import java.util.List;
  * Erregermenge wird als semiquantitatives Ergebnis abhängig des
  * Untersuchungsmaterials dargestellt.
  */
-@Objekt(value = "0061", kontextregeln = {K073.class, K076.class})
+@Objekt(value = "0061", kontextregeln = {K076.class})
 public @Getter
 @Setter
 class UntersuchungsergebnisMikrobiologie {
@@ -156,7 +156,7 @@ class UntersuchungsergebnisMikrobiologie {
     @Feld(value = "7281", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
     private List<NachweisverfahrenErweitert> nachweisverfahren;
-    @Feld(value = "8418", feldart = Feldart.muss)
+    @Feld(value = "8418", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 2)
     private TestStatus teststatus;
     @Feld(value = "7354", feldart = Feldart.bedingt_muss)

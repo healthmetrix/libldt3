@@ -42,7 +42,6 @@ public class K076 implements Kontextregel {
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {
-
         Map<String, Field> fields = findFields(owner, FIELDTYPES);
         if (fields.size() != FIELDTYPES.size()) {
             LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
@@ -51,9 +50,11 @@ public class K076 implements Kontextregel {
 
         TestStatus status = (TestStatus) fields.get("8418").get(owner);
         switch (status) {
-            case Material_fehlt_oder_nicht_verwendbar:
-            case Wert_fehlt:
-            case Untersuchungsanforderung_storniert:
+            case MATERIAL_FEHLT:
+            case KEINE_GESICHERTE_INFORMATION:
+            case ERGEBNIS_FOLGT:
+            case ERGEBNIS_FEHLT:
+            case STORNIERT:
                 return true;
             default:
                 return containsAnyString(fields.get("8225"), owner);

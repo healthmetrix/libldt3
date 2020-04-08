@@ -22,6 +22,7 @@
 package libldt3.model.regel.kontext;
 
 import libldt3.model.enums.TestStatus;
+import libldt3.model.objekte.FehlermeldungAufmerksamkeit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,9 +36,9 @@ import java.util.Set;
 import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
-public class K073 implements Kontextregel {
+public class K082 implements Kontextregel {
 
-    private static final Logger LOG = LoggerFactory.getLogger(K073.class);
+    private static final Logger LOG = LoggerFactory.getLogger(K082.class);
 
     private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8158", "8418")));
 
@@ -50,12 +51,11 @@ public class K073 implements Kontextregel {
             return false;
         }
 
+
         TestStatus testStatus = (TestStatus) fields.get("8418").get(owner);
-        if ((testStatus == TestStatus.Material_fehlt_oder_nicht_verwendbar ||
-                testStatus == TestStatus.weiterer_Wert_fuer_Funktionsprofil_folgt ||
-                testStatus == TestStatus.Untersuchungsanforderung_storniert) &&
-                containsAnyString(fields.get("8158"), owner)) {
-            return false;
+        FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit = (FehlermeldungAufmerksamkeit) fields.get("8126").get(owner);
+        if (testStatus == TestStatus.MATERIAL_FEHLT || containsAnyString(fields.get("7268"), owner)) {
+            return fehlermeldungAufmerksamkeit != null;
         }
 
         return true;
