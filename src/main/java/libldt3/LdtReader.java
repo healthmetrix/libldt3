@@ -178,7 +178,6 @@ public class LdtReader {
                 Object o = stack.pop();
                 Datenpaket annotation = o.getClass().getAnnotation(Datenpaket.class);
                 if (annotation != null) {
-                	LOG.info("Evaluating 8001");
                     evaluateContextRules(o, annotation.kontextregeln());
                 }
                 if (stack.isEmpty()) {
@@ -230,12 +229,6 @@ public class LdtReader {
                         if (!annotation.value().isEmpty() && !("Obj_" + annotation.value()).equals(payload)) {
                             LOG.warn("Line: {} ({}), annotation {}, payload {}", line, lineNo, annotation.value(), payload);
                         }
-                        LOG.info("line" + line);
-                        if (line.equals("0178003Obj_0061")) {
-                        	LOG.info("at problematic line " + lineNo + ": " + line);
-
-                        	Integer x = 4;
-						}
                         evaluateContextRules(o, annotation.kontextregeln());
                     }
                 } while (annotation != null && annotation.value().isEmpty());
@@ -248,7 +241,7 @@ public class LdtReader {
                 // Any line not starting or completing a Satz or Objekt
                 Object currentObject = peekCurrentObject(stack);
                 if (currentObject == null) {
-                    throw new IllegalStateException("No object when applying line " + line);
+                    throw new IllegalStateException("No object when applying line " + lineNo + ": " + line);
                 }
                 // XXX iterating the fields could be replaced by a map to be a bit
                 // faster when dealing with the same class
@@ -280,9 +273,6 @@ public class LdtReader {
                                 LOG.warn("Line '{}' would overwrite existing value {}", line, object);
                             }
                         }
-
-                        // TODO: REMOVE WHEN FINISHED FIXING VALIDATION ERRORS
-//					LOG.info(lineNo + " " + line);
                         validateFieldPayload(field, payload);
 
                         // Convert the value to its target type ...
