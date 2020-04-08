@@ -295,6 +295,8 @@ public class LdtReader {
 						}
 					}
 
+					// TODO: REMOVE WHEN FINISHED FIXING VALIDATION ERRORS
+//					LOG.info(lineNo + " " + line);
 					validateFieldPayload(field, payload);
 
 					// Convert the value to its target type ...
